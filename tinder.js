@@ -87,6 +87,8 @@ container.addEventListener('touchend', (e) => {
     isTouching = false;
 });
 
+// === HELPER FUNCTIONS ===
+
 // Animate the card flying out on a strong swipe
 function handleSuccessfulSwipe(deltaX) {
     currentCard.style.transition = 'transform 0.5s ease, opacity 0.5s ease';

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>Practice with DOM Events</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Segoe UI', sans-serif;
+                background-color: #f5f7fa;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .container {
+                background: white;
+                padding: 2rem 2.5rem;
+                border-radius: 1rem;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+
+            h1 {
+                margin-bottom: 1.5rem;
+                font-size: 1.75rem;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            li {
+                display: flex;
+                justify-content: center; /* centers the <a> */
+                margin: 0.5rem 0;
+            }
+
+            .link-btn {
+                display: flex;
+                align-items: center;
+                background-color: #6c9bea;
+                color: white;
+                text-decoration: none;
+                padding: 0.75rem 1.5rem;
+                border-radius: 0.5rem;
+                width: 220px;
+                font-size: 1.2rem;
+                transition: background-color 0.2s ease;
+            }
+
+            .link-btn:hover {
+                background-color: #366edb;
+            }
+
+            .emoji {
+                width: 24px;
+                text-align: center;
+                margin-right: 0.5rem;
+                flex-shrink: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Practice with DOM</h1>
+            <ul>
+                <li>
+                    <a
+                        href="./slideshow.html"
+                        class="link-btn"
+                        target="_blank"
+                    >
+                        <span class="emoji">🖼️</span>
+                        <span>Slideshow</span>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="./live-code-editor.html"
+                        class="link-btn"
+                        target="_blank"
+                    >
+                        <span class="emoji">📝</span>
+                        <span>Live Code Editor</span>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="./tinder.html"
+                        class="link-btn"
+                        target="_blank"
+                    >
+                        <span class="emoji">❤️</span>
+                        <span>Tinder Phone Version</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
