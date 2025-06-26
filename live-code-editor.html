@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>Live Code Editor</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body,
+            html {
+                height: 100%;
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+            }
+
+            .container {
+                display: flex;
+                height: 100vh;
+                width: 100vw;
+            }
+
+            .editor,
+            .preview {
+                flex: 1;
+                height: 100%;
+                padding: 10px;
+            }
+
+            .editor {
+                background-color: #1e1e1e;
+                display: flex;
+                flex-direction: column;
+            }
+
+            textarea {
+                flex: 1;
+                width: 100%;
+                background-color: #1e1e1e;
+                color: #ffffff;
+                border: none;
+                resize: none;
+
+                margin-top: 10px;
+                padding: 15px;
+                font-family: 'Courier New', monospace;
+                font-size: 16px;
+                border-radius: 5px;
+            }
+
+            textarea:focus {
+                outline: none;
+                box-shadow: 0 0 5px rgba(0, 120, 255, 0.5);
+            }
+
+            .preview {
+                background-color: #ffffff;
+                border-left: 2px solid #ccc;
+            }
+
+            iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+                background-color: #ffffff;
+                border-radius: 5px;
+            }
+
+            .editor-header {
+                color: #ffffff;
+                padding: 10px;
+                font-size: 18px;
+                font-weight: bold;
+                background-color: #2a2a2a;
+                border-radius: 5px 5px 0 0;
+            }
+
+            /* Context menu */
+            .context-menu {
+                position: fixed;
+                min-width: 160px;
+                background: white;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                z-index: 9999;
+            }
+
+            .context-menu ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .context-menu-item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+
+                list-style-type: none;
+                padding: 10px 16px;
+                border-bottom: 1px solid #ccc;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+
+            .context-menu-item:last-child {
+                border-bottom: none;
+            }
+
+            .context-menu-item:hover {
+                background-color: #f0f0f0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Editor -->
+            <div class="editor">
+                <div class="editor-header">Code Editor</div>
+                <textarea
+                    id="code-input"
+                    placeholder="Enter your code here..."
+                ></textarea>
+            </div>
+            <!-- Preview Frame -->
+            <div class="preview">
+                <iframe id="preview-frame"></iframe>
+            </div>
+
+            <!-- Context Menu -->
+            <ul
+                id="context-menu"
+                class="context-menu"
+                hidden
+            >
+                <li class="context-menu-item delete">
+                    <span>Delete Code</span> <span>🗑️</span>
+                </li>
+                <li class="context-menu-item copy">
+                    <span>Copy Code</span>
+                    <span>📋</span>
+                </li>
+                <li class="context-menu-item paste">
+                    <span>Paste Code</span>
+                    <span>📥</span>
+                </li>
+            </ul>
+        </div>
+        <script src="live-code-editor.js"></script>
+    </body>
+</html>

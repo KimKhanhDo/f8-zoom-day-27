@@ -1,17 +1,27 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-const slideshowContainer = $$('.slideshow-container');
+const slideshowContainers = $$('.slideshow-container');
 
 document.addEventListener('slideshow:change', (e) => {
-    console.log(`🟢 Slide changed: ${e.detail.old} ➡️ ${e.detail.current}`);
+    const container = e.detail.container;
+    const heading = container.querySelector('.slide-heading');
+
+    const oldSlide = e.detail.old ?? '?';
+    const currentSlide = e.detail.current ?? '?';
+
+    if (heading) {
+        heading.textContent = `Slide changed: ${oldSlide} ➡️ ${currentSlide}`;
+    }
 });
 
-slideshowContainer.forEach((container) => {
+slideshowContainers.forEach((container) => {
     const slideWrapper = container.querySelector('.slide-wrapper');
     const slideItems = container.querySelectorAll('.slide-item');
     const controlBtn = container.querySelector('.control-btn');
     const totalSlides = slideItems.length;
+
+    slideItems.forEach((slide, i) => (slide.dataset.index = i));
 
     // Create pagination dots based on total slides (excluding clone)
     const dots = initializeDots(container, totalSlides);
@@ -21,6 +31,7 @@ slideshowContainer.forEach((container) => {
     slideWrapper.appendChild(cloneSlide);
 
     const slideshow = {
+        container,
         slideWrapper,
         oldSlide: null,
         currentSlide: null,
@@ -168,6 +179,7 @@ function handleTransitionEnd(slideshow) {
 
     const slideshowChange = new CustomEvent('slideshow:change', {
         detail: {
+            container: slideshow.container,
             old: slideshow.oldSlide,
             current: slideshow.currentSlide,
         },
